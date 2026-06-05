@@ -1,17 +1,95 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import Dashboard from '../components/react/Dashboard';
+import FloatingNav from '../components/react/FloatingNav';
 
+import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaGlobe, FaAward, FaProjectDiagram, FaPhone } from 'react-icons/fa';
+import { HiSparkles, HiOutlineZoomIn } from 'react-icons/hi';
+import { BiRotateLeft } from 'react-icons/bi';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Kelvin Williams | Backend & Data Engineer">
+  <FloatingNav client:load />
+
+  <main class="relative min-h-screen bg-zinc-950 flex flex-col items-center py-10">
+    
+    <header class="mb-16 z-10 text-center px-6 max-w-4xl">
+      <h1 class="text-7xl font-bold tracking-tighter text-zinc-100 mb-4">KELVIN <span class="text-emerald-400">WILLIAMS</span></h1>
+      <p class="text-emerald-500/80 font-mono text-sm tracking-[0.2em] uppercase">Backend Engineer // Data Engineering Specialist</p>
+      
+      <div class="flex flex-wrap justify-center gap-8 mt-10 text-zinc-400 font-mono text-xs">
+        <div class="flex items-center gap-2 hover:text-emerald-400 transition-colors"><FaMapMarkerAlt className="text-emerald-500" /> Venezuela (Remote)</div>
+        <div class="flex items-center gap-2 hover:text-emerald-400 transition-colors"><FaPhone className="text-emerald-500" /> +58 414 039 3662</div>
+        <div class="flex items-center gap-2 hover:text-emerald-400 transition-colors"><FaGlobe className="text-emerald-500" /> Spanish / English </div>
+      </div>
+
+      <div class="flex justify-center gap-4 mt-8">
+        {[
+            { icon: FaGithub, href: "https://github.com/KelvinW918" },
+            { icon: FaLinkedin, href: "https://www.linkedin.com/in/kelvin-williams-5889ba344" },
+            { icon: FaEnvelope, href: "mailto:kelvinarturow918@gmail.com" }
+        ].map(link => (
+            <a href={link.href} target="_blank" class="p-3 rounded-full bg-zinc-900 border border-zinc-800 hover:border-emerald-500/50 hover:bg-zinc-800 transition-all group">
+                <link.icon className="text-zinc-400 group-hover:text-emerald-400 text-lg transition-colors" />
+            </a>
+        ))}
+      </div>
+    </header>
+
+    <div class="w-full max-w-6xl px-6 space-y-20 mb-20">
+        
+        <section class="grid lg:grid-cols-3 gap-12 items-start">
+            <div class="lg:col-span-2 p-10 rounded-3xl bg-gradient-to-br from-zinc-900/50 to-zinc-950 border border-zinc-800 hover:border-emerald-500/20 transition-all duration-700 shadow-2xl">
+                <div class="mb-10">
+                    <h2 class="text-3xl font-bold text-white uppercase tracking-tighter">
+                        Professional Profile
+                    </h2>
+                    <p class="text-zinc-500 font-mono text-xs mt-2 uppercase tracking-widest">
+                        Backend & Data Engineering
+                    </p>
+                </div>
+                <p class="text-xl leading-relaxed text-zinc-300 font-light">
+                    Systems Engineer focused on <strong>backend infrastructure</strong> and <strong>data engineering</strong>. 
+                    I specialize in high-performance pipelines and scalable database architectures using PostgreSQL, PostGIS, and TimescaleDB. 
+                    My mission is to transform complex telemetry into actionable intelligence through robust, optimized, and resilient code.
+                </p>
+            </div>
+
+            <div class="flex flex-col gap-6">
+                {[
+                    { icon: FaAward, title: "Academic Excellence", text: "Thesis graded 20/20 pts (Honorable Mention & Publication)." },
+                    { icon: FaProjectDiagram, title: "Technical Expertise", text: "Backend systems, geospatial indexing, time-series data, and process automation." }
+                ].map(card => (
+                    <div class="p-6 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-emerald-500/30 hover:shadow-[0_0_30px_rgba(16,185,129,0.05)] transition-all duration-500">
+                        <div class="flex items-center gap-3 mb-4">
+                            <card.icon className="text-emerald-500 text-lg" />
+                            <h3 class="text-white font-bold text-sm tracking-tight">{card.title}</h3>
+                        </div>
+                        <p class="text-zinc-400 text-[12px] leading-relaxed">{card.text}</p>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <section class="w-full max-w-3xl mx-auto">
+            <div class="bg-zinc-900/30 backdrop-blur-md px-10 py-8 rounded-3xl border border-white/5 text-center relative overflow-hidden group">
+                <div class="absolute inset-0 bg-gradient-to-t from-emerald-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <p class="text-[10px] font-mono text-emerald-400 tracking-[0.3em] mb-6 uppercase">Welcome to my Universe</p>
+                <p class="text-2xl font-light text-zinc-100 mb-8">
+                    Every technology here is a <span class="text-emerald-400 italic">world</span> I visit daily.
+                </p>
+                <div class="flex flex-wrap justify-center gap-8 pt-8 border-t border-white/5 text-[10px] font-mono text-zinc-500">
+                    <div class="flex items-center gap-2"><HiSparkles className="text-base" /> Explore the flow</div>
+                    <div class="flex items-center gap-2"><BiRotateLeft className="text-base" /> Drag to rotate</div>
+                    <div class="flex items-center gap-2"><HiOutlineZoomIn className="text-base" /> Zoom with scroll</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="w-full">
+            <Dashboard client:load />
+        </div>
+        
+    </div>
+  </main>
+</Layout>
