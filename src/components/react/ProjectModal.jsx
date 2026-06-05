@@ -1,9 +1,9 @@
 // ProjectModal.jsx
 import { useEffect } from 'react';
-import { FaWhatsapp } from 'react-icons/fa';
+import { FaWhatsapp, FaGithub, FaShoppingCart } from 'react-icons/fa';
 
 export default function ProjectModal({ project, isOpen, onClose }) {
-  // 1. Bloqueo de scroll en el body cuando el modal se abre
+  // 1. Lock body scroll when modal is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -29,7 +29,7 @@ export default function ProjectModal({ project, isOpen, onClose }) {
           <button onClick={onClose} className="text-zinc-500 hover:text-white transition-colors">Close</button>
         </div>
 
-        {/* Layout Principal */}
+        {/* Main Layout */}
         <div className="flex flex-col md:flex-row overflow-hidden flex-grow">
           <div className="w-full md:w-3/5 p-6 flex items-center justify-center bg-black">
             {project.videoUrl ? (
@@ -38,12 +38,24 @@ export default function ProjectModal({ project, isOpen, onClose }) {
               </div>
             ) : (
               <div className="w-full p-6 font-mono text-xs text-emerald-500 bg-zinc-950 rounded-lg border border-zinc-800 overflow-y-auto max-h-[60vh]">
-                <pre>{project.codeSnippet}</pre>
+                <pre className="whitespace-pre-wrap">{project.codeSnippet}</pre>
               </div>
             )}
           </div>
 
           <div className="w-full md:w-2/5 p-6 overflow-y-auto">
+            {/* Sales Section for Commercial Projects */}
+            {project.commercial && (
+              <div className="mb-6 p-4 bg-emerald-950/20 border border-emerald-500/30 rounded-lg">
+                <h4 className="text-emerald-400 font-bold text-sm mb-1 flex items-center gap-2">
+                  <FaShoppingCart /> Professional Solution
+                </h4>
+                <p className="text-zinc-300 text-xs leading-relaxed">
+                  This project is production-ready. <strong>Purchase this source code</strong> or hire me to implement this custom solution for your business. Let's scale your operations together.
+                </p>
+              </div>
+            )}
+
             {project.isCaseStudy ? (
               <div className="space-y-4">
                 <div>
@@ -68,11 +80,21 @@ export default function ProjectModal({ project, isOpen, onClose }) {
               </div>
             )}
             
-            <div className="mt-6 pt-6 border-t border-zinc-800">
+            <div className="mt-6 pt-6 border-t border-zinc-800 flex flex-col gap-3">
+              {/* GitHub Button */}
+              {project.github && (
+                <a href={project.github} target="_blank" rel="noopener noreferrer" 
+                   className="flex items-center justify-center gap-2 w-full py-3 bg-zinc-800 text-white text-center font-bold rounded-lg hover:bg-zinc-700 transition-all text-sm">
+                  <FaGithub size={18} />
+                  View Repository
+                </a>
+              )}
+              
+              {/* Action Button (Dynamic) */}
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" 
                  className="flex items-center justify-center gap-2 w-full py-3 bg-emerald-500 text-black text-center font-bold rounded-lg hover:bg-emerald-400 transition-all text-sm">
                 <FaWhatsapp size={18} />
-                Discuss Architecture
+                {project.commercial ? "Acquire Solution" : "Discuss Architecture"}
               </a>
             </div>
           </div>

@@ -4,13 +4,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FaLock, FaExternalLinkAlt, FaNodeJs, FaJava, FaPython, 
   FaReact, FaDatabase, FaServer, FaCode, FaDesktop, FaBriefcase, 
-  FaLockOpen, FaBox, FaBook, FaBrain 
+  FaBox, FaBook, FaBrain 
 } from 'react-icons/fa';
 import { GiPanda } from 'react-icons/gi';
 import { SiGo, SiPostgresql, SiCplusplus, SiDjango, SiThreedotjs, SiRedis, SiFastapi, SiLeaflet } from 'react-icons/si';
 import ProjectModal from './ProjectModal';
 
-// Mapa de iconos para tecnologías
+// Tech icon map
 const techIcons = {
   'Node.js': <FaNodeJs />, 'Java': <FaJava />, 'Python': <FaPython />, 'C++': <SiCplusplus />,
   'Go': <SiGo />, 'React': <FaReact />, 'Django': <SiDjango />, 'PostgreSQL': <SiPostgresql />,
@@ -19,7 +19,7 @@ const techIcons = {
   'Default': <FaCode />
 };
 
-// Mapa de iconos para Badges
+// Badge icon map
 const badgeIcons = {
   'IT Support': <FaDesktop />, 'On-Site': <FaBriefcase />,
   'Enterprise': <FaLock />, 'Legacy': <FaLock />, 'Private Code': <FaBox />,
@@ -32,11 +32,11 @@ const projectsData = {
   ],
   '2022': [
     { title: 'Full-Stack Inventory', desc: 'Architected a full-stack inventory app with automated reporting.', tags: ['Node.js', 'MySQL', 'Express'], badges: ['Enterprise', 'Private Code'] },
-    { title: 'Java Enterprise Solution', desc: 'Robust desktop inventory application with typed data flows.', tags: ['Java', 'Spring Boot', 'PostgreSQL'], badges: ['Enterprise', 'Private Code'] },
+    { title: 'Java Enterprise Solution', desc: 'Robust desktop inventory application with typed data flows.', tags: ['Java', 'PostgreSQL'], badges: ['Enterprise', 'Private Code'] },
     { title: 'C++ Performance Utils', desc: 'High-efficiency background algorithms and memory-optimized CLI modules.', tags: ['C++', 'Algorithms'], badges: ['Enterprise', 'Private Code'] }
   ],
   '2023': [
-    { title: 'Deep-Dive R&D Sprint', desc: 'Aggressive learning sprint: Mastered asynchronous task scheduling, spatial indexing, and distributed systems.', tags: ['Python', 'Go', 'Distributed Systems'], badges: ['R&D', 'Core Learning'] }
+    { title: 'Deep-Dive R&D Sprint', desc: 'Aggressive learning sprint: Mastered asynchronous task scheduling, spatial indexing, and distributed systems.', tags: ['Python', 'Go'], badges: ['R&D', 'Core Learning'] }
   ],
   '2024': [
     { 
@@ -57,9 +57,38 @@ const projectsData = {
     }
   ],
   '2026': [
-    { title: 'Arcadia: Emergency Dispatch', desc: 'Event-driven, low-latency microservice architecture.', tags: ['Go', 'PostGIS', 'Leaflet.js'], featured: true, isCaseStudy: true, github: 'https://github.com/KelvinW918/Aragua_on_fire.git' },
-    { title: 'Altrueer Layer 1', desc: 'Spatial backend architecture for blockchain protocols.', tags: ['Python', 'Redis', 'PostGIS'], isCaseStudy: true },
-    { title: 'IoT Telemetry Pipeline', desc: 'High-concurrency ingestion engine for +10,000 concurrent vehicles.', tags: ['FastAPI', 'PostGIS'], isCaseStudy: true, github: 'https://github.com/KelvinW918/spatial-iot-platform.git' }
+    { 
+      title: 'Arcadia: Emergency Dispatch', 
+      desc: 'Event-driven, low-latency microservice architecture.', 
+      tags: ['Go', 'PostGIS', 'Leaflet.js'], 
+      featured: true, isCaseStudy: true,
+      challenge: "Transmit real-time movement of multiple units without freezing the map.",
+      conventionalApproach: "Constant HTTP requests (Short Polling), saturating the unit table.",
+      myApproach: "Event-driven architecture using Go (Goroutines) and Redpanda message bus for low-latency streaming.",
+      codeSnippet: "func streamEvents(ch chan Event) { for event := range ch { broadcast(event) } }",
+      github: 'https://github.com/KelvinW918/Aragua_on_fire.git'
+    },
+    { 
+      title: 'Altrueer Layer 1', 
+      desc: 'Spatial backend architecture for blockchain protocols.', 
+      tags: ['Python', 'Redis', 'PostGIS'], 
+      isCaseStudy: true,
+      challenge: "Persistence for indexing millions of coordinates in real-time.",
+      conventionalApproach: "Haversine distance calculations point-by-point scanning the entire database.",
+      myApproach: "Hierarchical indexing with H3 (hexagonal grids) for O(1) searches and Redis caching.",
+      codeSnippet: "CREATE INDEX idx_spatial ON tracking_table USING GIST(geom);"
+    },
+    { 
+      title: 'IoT Telemetry Pipeline', 
+      desc: 'High-concurrency ingestion engine for +10,000 concurrent vehicles.', 
+      tags: ['FastAPI', 'PostGIS'], 
+      isCaseStudy: true,
+      challenge: "Process massive telemetry bursts without collapsing the backend.",
+      conventionalApproach: "Synchronous endpoint processing each record individually via an ORM.",
+      myApproach: "Asynchronous pipeline with FastAPI delegating load to PostGIS and temporal segmentation.",
+      codeSnippet: "await db.execute('INSERT INTO telemetry ...') # Batch async insertion",
+      github: 'https://github.com/KelvinW918/spatial-iot-platform.git'
+    }
   ]
 };
 
