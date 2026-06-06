@@ -1,3 +1,4 @@
+// TechStack.jsx
 import { motion } from 'framer-motion';
 import { 
   SiPython, SiJavascript, SiTypescript, SiGo, SiCplusplus, SiPostgresql, 
@@ -8,7 +9,7 @@ import { VscAzure } from 'react-icons/vsc';
 import { TbDatabase, TbCube3dSphereOff, TbRobot } from 'react-icons/tb';
 
 const technologies = [
-  // Lenguajes
+  // Languages
   { name: 'Python', icon: <SiPython className="text-blue-500" /> },
   { name: 'Go', icon: <SiGo className="text-cyan-400" /> },
   { name: 'JavaScript', icon: <SiJavascript className="text-yellow-400" /> },
@@ -22,21 +23,21 @@ const technologies = [
   { name: 'React', icon: <SiReact className="text-cyan-300" /> },
   { name: 'Astro', icon: <SiAstro className="text-orange-400" /> },
   
-  // Base de Datos & Geoespacial
+  // Databases & Geospatial
   { name: 'PostgreSQL', icon: <SiPostgresql className="text-indigo-400" /> },
   { name: 'PostGIS', icon: <TbDatabase className="text-emerald-500" /> },
   { name: 'TimescaleDB', icon: <TbDatabase className="text-purple-500" /> },
   { name: 'Redis', icon: <SiRedis className="text-red-600" /> },
   { name: 'MongoDB', icon: <SiMongodb className="text-green-500" /> },
   
-  // Infraestructura & Streaming
+  // Infrastructure & Streaming
   { name: 'Docker', icon: <SiDocker className="text-blue-500" /> },
   { name: 'Kafka/Redpanda', icon: <SiApachekafka className="text-orange-600" /> },
   { name: 'Nginx', icon: <SiNginx className="text-green-400" /> },
   { name: 'AWS', icon: <FaAws className="text-orange-500" /> },
   { name: 'Azure', icon: <VscAzure className="text-blue-500" /> },
   
-  // Especialidades
+  // Specializations
   { name: 'Three.js', icon: <TbCube3dSphereOff className="text-white" /> },
   { name: 'Leaflet.js', icon: <SiLeaflet className="text-green-500" /> },
   { name: 'AI/ML', icon: <TbRobot className="text-purple-400" /> }
@@ -46,7 +47,7 @@ export default function TechStack() {
   return (
     <section id="tech-stack" className="w-full py-20 px-6 max-w-6xl mx-auto">
       <h2 className="text-3xl text-emerald-400 font-mono mb-10 border-l-4 border-emerald-400 pl-4">
-        STACK_TECNOLÓGICO
+        TECH_STACK
       </h2>
       
       <div className="flex flex-wrap gap-4 justify-center">

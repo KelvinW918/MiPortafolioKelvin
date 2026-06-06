@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Dashboard from '../components/react/Dashboard';
 import FloatingNav from '../components/react/FloatingNav';
+import TechStack from '../components/react/TechStack'; // Asegúrate de ajustar la ruta si es necesario
 
 import { FaGithub, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaGlobe, FaAward, FaProjectDiagram, FaPhone } from 'react-icons/fa';
 import { HiSparkles, HiOutlineZoomIn } from 'react-icons/hi';
@@ -25,13 +26,13 @@ import { BiRotateLeft } from 'react-icons/bi';
 
       <div class="flex justify-center gap-4 mt-8">
         {[
-            { icon: FaGithub, href: "https://github.com/KelvinW918" },
-            { icon: FaLinkedin, href: "https://www.linkedin.com/in/kelvin-williams-5889ba344" },
-            { icon: FaEnvelope, href: "mailto:kelvinarturow918@gmail.com" }
+          { icon: FaGithub, href: "https://github.com/KelvinW918" },
+          { icon: FaLinkedin, href: "https://www.linkedin.com/in/kelvin-williams-5889ba344" },
+          { icon: FaEnvelope, href: "mailto:kelvinarturow918@gmail.com" }
         ].map(link => (
-            <a href={link.href} target="_blank" class="p-3 rounded-full bg-zinc-900 border border-zinc-800 hover:border-emerald-500/50 hover:bg-zinc-800 transition-all group">
-                <link.icon className="text-zinc-400 group-hover:text-emerald-400 text-lg transition-colors" />
-            </a>
+          <a href={link.href} target="_blank" class="p-3 rounded-full bg-zinc-900 border border-zinc-800 hover:border-emerald-500/50 hover:bg-zinc-800 transition-all group">
+            <link.icon className="text-zinc-400 group-hover:text-emerald-400 text-lg transition-colors" />
+          </a>
         ))}
       </div>
     </header>
@@ -56,18 +57,18 @@ import { BiRotateLeft } from 'react-icons/bi';
             </div>
 
             <div class="flex flex-col gap-6">
-                {[
-                    { icon: FaAward, title: "Academic Excellence", text: "Thesis graded 20/20 pts (Honorable Mention & Publication)." },
-                    { icon: FaProjectDiagram, title: "Technical Expertise", text: "Backend systems, geospatial indexing, time-series data, and process automation." }
-                ].map(card => (
-                    <div class="p-6 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-emerald-500/30 hover:shadow-[0_0_30px_rgba(16,185,129,0.05)] transition-all duration-500">
-                        <div class="flex items-center gap-3 mb-4">
-                            <card.icon className="text-emerald-500 text-lg" />
-                            <h3 class="text-white font-bold text-sm tracking-tight">{card.title}</h3>
-                        </div>
-                        <p class="text-zinc-400 text-[12px] leading-relaxed">{card.text}</p>
-                    </div>
-                ))}
+              {[
+                  { icon: FaAward, title: "Academic Excellence", text: "Thesis graded 20/20 pts (Honorable Mention & Publication)." },
+                  { icon: FaProjectDiagram, title: "Technical Expertise", text: "Backend systems, geospatial indexing, time-series data, and process automation." }
+              ].map(card => (
+                  <div class="p-6 rounded-2xl bg-zinc-900 border border-zinc-800 hover:border-emerald-500/30 hover:shadow-[0_0_30px_rgba(16,185,129,0.05)] transition-all duration-500">
+                      <div class="flex items-center gap-3 mb-4">
+                          <card.icon className="text-emerald-500 text-lg" />
+                          <h3 class="text-white font-bold text-sm tracking-tight">{card.title}</h3>
+                      </div>
+                      <p class="text-zinc-400 text-[12px] leading-relaxed">{card.text}</p>
+                  </div>
+              ))}
             </div>
         </section>
 
@@ -86,8 +87,14 @@ import { BiRotateLeft } from 'react-icons/bi';
             </div>
         </section>
 
+        {/* Proyectos */}
         <div class="w-full">
             <Dashboard client:load />
+        </div>
+
+        {/* Stack Tecnológico */}
+        <div class="w-full border-t border-zinc-900 pt-10">
+            <TechStack client:load />
         </div>
         
     </div>
