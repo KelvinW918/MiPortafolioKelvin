@@ -3,6 +3,8 @@ import { useState } from 'react';
 import DigitalTwin from './DigitalTwin.jsx';
 import ProjectGrid from './ProjectGrid.jsx';
 import ProfessionalTimeline from './ProfessionalTimeline.jsx';
+import WorkExperience from './WorkExperience.jsx';
+import FeaturedProjects from './FeaturedProjects.jsx';
 
 export default function Dashboard() {
   const [activeYear, setActiveYear] = useState('2026');
@@ -17,6 +19,16 @@ export default function Dashboard() {
           onYearSelect={setActiveYear} 
           selectedId={activeYear} 
         />
+      </div>
+
+      {/* Nueva Sección: Work Experience */}
+      <div className="w-full">
+        <WorkExperience />
+      </div>
+
+      {/* Nueva Sección: Selected Work */}
+      <div className="w-full">
+        <FeaturedProjects />
       </div>
 
       {/* 2. Journey & Projects: Layout de dos columnas fluido */}

@@ -9,35 +9,26 @@ import { VscAzure } from 'react-icons/vsc';
 import { TbDatabase, TbCube3dSphereOff, TbRobot } from 'react-icons/tb';
 
 const technologies = [
-  // Languages
   { name: 'Python', icon: <SiPython className="text-blue-500" /> },
   { name: 'Go', icon: <SiGo className="text-cyan-400" /> },
   { name: 'JavaScript', icon: <SiJavascript className="text-yellow-400" /> },
   { name: 'TypeScript', icon: <SiTypescript className="text-blue-600" /> },
   { name: 'Java', icon: <FaJava className="text-red-500" /> },
   { name: 'C++', icon: <SiCplusplus className="text-blue-700" /> },
-  
-  // Backend & Frameworks
   { name: 'FastAPI', icon: <SiFastapi className="text-teal-500" /> },
   { name: 'Node.js', icon: <SiNodedotjs className="text-green-600" /> },
   { name: 'React', icon: <SiReact className="text-cyan-300" /> },
   { name: 'Astro', icon: <SiAstro className="text-orange-400" /> },
-  
-  // Databases & Geospatial
   { name: 'PostgreSQL', icon: <SiPostgresql className="text-indigo-400" /> },
   { name: 'PostGIS', icon: <TbDatabase className="text-emerald-500" /> },
   { name: 'TimescaleDB', icon: <TbDatabase className="text-purple-500" /> },
   { name: 'Redis', icon: <SiRedis className="text-red-600" /> },
   { name: 'MongoDB', icon: <SiMongodb className="text-green-500" /> },
-  
-  // Infrastructure & Streaming
   { name: 'Docker', icon: <SiDocker className="text-blue-500" /> },
-  { name: 'Kafka/Redpanda', icon: <SiApachekafka className="text-orange-600" /> },
+  { name: 'Kafka', icon: <SiApachekafka className="text-orange-600" /> },
   { name: 'Nginx', icon: <SiNginx className="text-green-400" /> },
   { name: 'AWS', icon: <FaAws className="text-orange-500" /> },
   { name: 'Azure', icon: <VscAzure className="text-blue-500" /> },
-  
-  // Specializations
   { name: 'Three.js', icon: <TbCube3dSphereOff className="text-white" /> },
   { name: 'Leaflet.js', icon: <SiLeaflet className="text-green-500" /> },
   { name: 'AI/ML', icon: <TbRobot className="text-purple-400" /> }
@@ -54,7 +45,9 @@ export default function TechStack() {
         {technologies.map((tech) => (
           <motion.div
             key={tech.name}
-            className="p-4 bg-zinc-900 border border-zinc-800 rounded-xl cursor-pointer flex flex-col items-center w-24 hover:border-emerald-500/50"
+            // Aplicamos grayscale por defecto y lo quitamos en el hover junto con la escala
+            className="p-4 bg-zinc-900 border border-zinc-800 rounded-xl cursor-pointer flex flex-col items-center w-24 
+                       grayscale hover:grayscale-0 transition-all duration-300 hover:border-emerald-500/50"
             whileHover={{ 
               scale: 1.1,
               rotate: [0, -5, 5, -5, 0],
@@ -62,7 +55,9 @@ export default function TechStack() {
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
             <div className="text-3xl mb-2">{tech.icon}</div>
-            <span className="text-zinc-400 text-[9px] font-mono text-center uppercase tracking-tighter">{tech.name}</span>
+            <span className="text-zinc-400 text-[9px] font-mono text-center uppercase tracking-tighter">
+              {tech.name}
+            </span>
           </motion.div>
         ))}
       </div>

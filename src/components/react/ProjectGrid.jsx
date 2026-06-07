@@ -41,6 +41,7 @@ const projectsData = {
   '2024': [
     { 
       title: 'Centro Médico El Bosque', 
+      image: '/imagen/NexusMed.webp',
       desc: 'Multi-role healthcare platform with WhatsApp API integration for automated patient reminders.', 
       tags: ['Django', 'React', 'PostgreSQL'], 
       featured: true, commercial: true, videoUrl: 'https://www.youtube.com/embed/A9gngdGXRW4',
@@ -50,6 +51,7 @@ const projectsData = {
   '2025': [
     { 
       title: 'OptiStock 3D', 
+      image: '/imagen/DigitalTwinWarehouse.webp',
       desc: 'Real-time Inventory Digital Twin with AI demand forecasting. Graduated with Honorable Mention.', 
       tags: ['Three.js', 'Python'], 
       featured: true, commercial: true, videoUrl: 'https://www.youtube.com/embed/DaUsmcq2_Yg',
@@ -58,36 +60,119 @@ const projectsData = {
   ],
   '2026': [
     { 
-      title: 'Arcadia: Emergency Dispatch', 
-      desc: 'Event-driven, low-latency microservice architecture.', 
-      tags: ['Go', 'PostGIS', 'Leaflet.js'], 
+      title: 'KelvIA Engine', 
+      image: '/imagen/KelvIA.webp',
+      desc: 'Cognitive agentic engine with Llama 3.3 integration and modular toolkit for real-time AI reasoning.', 
+      tags: ['Python', 'FastAPI'], 
       featured: true, isCaseStudy: true,
-      challenge: "Transmit real-time movement of multiple units without freezing the map.",
-      conventionalApproach: "Constant HTTP requests (Short Polling), saturating the unit table.",
-      myApproach: "Event-driven architecture using Go (Goroutines) and Redpanda message bus for low-latency streaming.",
-      codeSnippet: "func streamEvents(ch chan Event) { for event := range ch { broadcast(event) } }",
-      github: 'https://github.com/KelvinW918/Aragua_on_fire.git'
+      challenge: "High-latency responses in standard LLM integration.",
+      conventionalApproach: "Direct API calls with long-running synchronous requests.",
+      myApproach: "Modular architecture with stateful Toolkit and asynchronous task handling for low-latency reasoning.",
+      codeSnippet: `async def process_intent(user_input):
+    agent = Agent(model="llama-3.3")
+    # Non-blocking async execution
+    response = await agent.run_chain(
+        input=user_input,
+        tools=[search_db, compute_logic]
+    )
+    return response`,
+      github: 'https://github.com/KelvinW918/ai-agent-template'
+    },
+    { 
+      title: 'Industrial Telemetry', 
+      image: '/imagen/IndustrialTelemetryEngine.webp',
+      desc: 'High-concurrency IoT pipeline for +50 sensors with real-time visualization and analytics.', 
+      tags: ['Python', 'PostgreSQL', 'FastAPI'], 
+      featured: true, isCaseStudy: true,
+      challenge: "Ingesting and visualizing continuous telemetry streams efficiently.",
+      conventionalApproach: "Synchronous REST endpoints and polling.",
+      myApproach: "Asynchronous Python pipelines with temporal segmentation and optimized database writes.",
+      codeSnippet: `async def ingest_telemetry(data):
+    # Batch async insertion for high throughput
+    async with db.transaction():
+        await db.execute(
+            "INSERT INTO sensors_data (val, ts) VALUES ($1, NOW())",
+            data['value']
+        )
+    await broadcast_to_dashboard(data)`,
+      github: 'https://github.com/KelvinW918/industrial-telemetry-engine'
+    },
+    { 
+      title: 'Digital Twin 3D', 
+      image: '/imagen/DigitalTwinWarehouse.webp',
+      desc: 'Warehouse inventory visualization using Three.js with dynamic color-coded stock alerts.', 
+      tags: ['Three.js'], 
+      featured: true, isCaseStudy: true,
+      challenge: "Rendering hundreds of interactive 3D objects with state updates.",
+      conventionalApproach: "Heavy DOM manipulations and static scene rendering.",
+      myApproach: "Optimized scene graph rendering with efficient state-driven UI synchronisation.",
+      codeSnippet: `function updateInventory(stock) {
+  scene.children.forEach(obj => {
+    if (obj.name === stock.id) {
+      // Efficient material color update
+      obj.material.color.setHex(
+        stock.level < 10 ? 0xff0000 : 0x00ff00
+      );
+    }
+  });
+}`,
+      github: 'https://github.com/KelvinW918/digital-twin-threejs'
     },
     { 
       title: 'Altrueer Layer 1', 
+      image: '/imagen/H3GeopatialDemo.webp',
       desc: 'Spatial backend architecture for blockchain protocols.', 
       tags: ['Python', 'Redis', 'PostGIS'], 
       isCaseStudy: true,
       challenge: "Persistence for indexing millions of coordinates in real-time.",
-      conventionalApproach: "Haversine distance calculations point-by-point scanning the entire database.",
-      myApproach: "Hierarchical indexing with H3 (hexagonal grids) for O(1) searches and Redis caching.",
-      codeSnippet: "CREATE INDEX idx_spatial ON tracking_table USING GIST(geom);"
+      conventionalApproach: "Haversine distance calculations scanning the entire database.",
+      myApproach: "Hierarchical indexing with H3 (hexagonal grids) for O(1) spatial searches and Redis caching.",
+      codeSnippet: `-- Spatial indexing via H3
+SELECT h3_latlng_to_cell(geom, 9) AS h3_index 
+FROM transactions
+GROUP BY h3_index;
+
+# Redis O(1) coordinate cache
+redis.geoadd("fleet_loc", lon, lat, unit_id)`,
+      github: 'https://github.com/KelvinW918'
     },
     { 
-      title: 'IoT Telemetry Pipeline', 
-      desc: 'High-concurrency ingestion engine for +10,000 concurrent vehicles.', 
-      tags: ['FastAPI', 'PostGIS'], 
+      title: 'H3 Spatial Demo', 
+      image: '/imagen/H3GeopatialDemo.webp',
+      desc: 'Geospatial clustering and density analysis using Uber H3 hexagonal hierarchical indexing.', 
+      tags: ['Python', 'Leaflet.js'], 
       isCaseStudy: true,
-      challenge: "Process massive telemetry bursts without collapsing the backend.",
-      conventionalApproach: "Synchronous endpoint processing each record individually via an ORM.",
-      myApproach: "Asynchronous pipeline with FastAPI delegating load to PostGIS and temporal segmentation.",
-      codeSnippet: "await db.execute('INSERT INTO telemetry ...') # Batch async insertion",
-      github: 'https://github.com/KelvinW918/spatial-iot-platform.git'
+      challenge: "Complex spatial queries on millions of coordinate points.",
+      conventionalApproach: "Resource-heavy geometric intersection math.",
+      myApproach: "Hexagonal grid clustering for efficient spatial partitioning and density analysis.",
+      codeSnippet: `import h3
+
+# Generate hex index for spatial partition
+h3_index = h3.latlng_to_cell(lat, lng, 7)
+# Rapid neighbor lookup
+neighbors = h3.grid_disk(h3_index, 1)
+
+# Render clustered heat layer
+map.add_layer(create_heatmap(neighbors))`,
+      github: 'https://github.com/KelvinW918/h3-geospatial-demo'
+    },
+    { 
+      title: 'Arcadia: Emergency Dispatch', 
+      image: '/imagen/Arcadia.png',
+      desc: 'Event-driven, low-latency microservice architecture for emergency units.', 
+      tags: ['Go', 'PostgreSQL', 'Leaflet.js', 'Redpanda'], 
+      featured: true, isCaseStudy: true,
+      challenge: "High-throughput message buffering for real-time tracking.",
+      conventionalApproach: "Constant HTTP Short Polling.",
+      myApproach: "Event-driven architecture with Go (Goroutines) and Redpanda bus for streaming.",
+      codeSnippet: `func streamUnitLocation(ch chan Location) {
+    for loc := range ch {
+        // Low-latency broadcast via Redpanda
+        producer.Produce(topic, loc)
+        go updateMapInterface(loc)
+    }
+}`,
+      github: 'https://github.com/KelvinW918/Aragua_on_fire'
     }
   ]
 };
@@ -119,7 +204,7 @@ export default function ProjectGrid({ selectedId }) {
                 initial={{ opacity: 0, scale: 0.95 }} 
                 animate={{ opacity: 1, scale: 1 }} 
                 exit={{ opacity: 0, scale: 0.95 }}
-                className={`p-6 rounded-xl border transition-all duration-300 flex flex-col ${
+                className={`rounded-xl border transition-all duration-300 flex flex-col overflow-hidden ${
                   isClickable ? "group cursor-pointer hover:border-zinc-500" : "cursor-default border-zinc-800 bg-zinc-900/50"
                 } ${
                   isAwardWinner
@@ -129,30 +214,43 @@ export default function ProjectGrid({ selectedId }) {
                       : 'bg-zinc-900 border-zinc-800'
                 }`}
               >
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className={`text-lg font-bold ${isAwardWinner ? 'text-amber-400' : project.featured ? 'text-emerald-400' : 'text-white'}`}>
-                    {project.title}
-                  </h3>
-                  {isClickable && (
-                    <div className="text-zinc-500 group-hover:text-white transition-colors">
-                      {project.commercial ? <FaLock size={14} /> : <FaExternalLinkAlt size={14} />}
-                    </div>
-                  )}
-                </div>
+                {/* Visualización de la imagen */}
+                {project.image && (
+                  <div className="h-40 w-full overflow-hidden bg-zinc-950">
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" 
+                    />
+                  </div>
+                )}
 
-                <p className="text-zinc-400 mb-6 text-sm leading-relaxed flex-grow">{project.desc}</p>
-                
-                <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5">
-                  {project.badges?.map(badge => (
-                    <span key={badge} className="text-[10px] font-bold px-2 py-1 rounded bg-zinc-950 border border-zinc-800 text-zinc-400 flex items-center gap-1.5">
-                      {badgeIcons[badge]} {badge}
-                    </span>
-                  ))}
-                  {project.tags.map(tag => (
-                    <span key={tag} className="text-[10px] font-mono px-2 py-1 rounded bg-zinc-950 border border-zinc-800 text-zinc-500 flex items-center gap-1.5">
-                      {techIcons[tag] || techIcons['Default']} {tag}
-                    </span>
-                  ))}
+                <div className="p-6 flex-grow flex flex-col">
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className={`text-lg font-bold ${isAwardWinner ? 'text-amber-400' : project.featured ? 'text-emerald-400' : 'text-white'}`}>
+                      {project.title}
+                    </h3>
+                    {isClickable && (
+                      <div className="text-zinc-500 group-hover:text-white transition-colors">
+                        {project.commercial ? <FaLock size={14} /> : <FaExternalLinkAlt size={14} />}
+                      </div>
+                    )}
+                  </div>
+
+                  <p className="text-zinc-400 mb-6 text-sm leading-relaxed flex-grow">{project.desc}</p>
+                  
+                  <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5">
+                    {project.badges?.map(badge => (
+                      <span key={badge} className="text-[10px] font-bold px-2 py-1 rounded bg-zinc-950 border border-zinc-800 text-zinc-400 flex items-center gap-1.5">
+                        {badgeIcons[badge]} {badge}
+                      </span>
+                    ))}
+                    {project.tags.map(tag => (
+                      <span key={tag} className="text-[10px] font-mono px-2 py-1 rounded bg-zinc-950 border border-zinc-800 text-zinc-500 flex items-center gap-1.5">
+                        {techIcons[tag] || techIcons['Default']} {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             );
