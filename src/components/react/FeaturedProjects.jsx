@@ -1,3 +1,4 @@
+// FeaturedProjects.jsx
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaStar, FaExternalLinkAlt, FaLock, FaTrophy } from 'react-icons/fa';
@@ -6,19 +7,19 @@ import ProjectModal from './ProjectModal';
 const featuredData = [
   { 
     title: 'OptiStock 3D', 
-    image: '/imagen/DigitalTwinWarehouse.webp', // Mapeado a tu imagen
+    image: '/imagen/OptiStock3D.png', 
     desc: 'Real-time Inventory Digital Twin with AI demand forecasting. Graduated with Honorable Mention.', 
     featured: true, commercial: true, videoUrl: 'https://www.youtube.com/embed/DaUsmcq2_Yg', walkthrough: "A Digital Twin that syncs three-dimensional spatial data with real-time stock management." 
   },
   { 
     title: 'KelvIA Engine', 
-    image: '/imagen/KelvIA.webp', // Mapeado a tu imagen
+    image: '/imagen/aiAgent.png', 
     desc: 'Cognitive agentic engine with Llama 3.3 integration and modular toolkit for real-time AI reasoning.', 
     featured: true, isCaseStudy: true, github: 'https://github.com/KelvinW918/ai-agent-template' 
   },
   { 
     title: 'Arcadia: Emergency Dispatch', 
-    image: '/imagen/SpatialIoT.webp', // He usado esta, ya que encaja con el flujo de IoT/Event-driven
+    image: '/imagen/Arcadia.png', 
     desc: 'Event-driven, low-latency microservice architecture for emergency units.', 
     featured: true, isCaseStudy: true, github: 'https://github.com/KelvinW918/Aragua_on_fire' 
   }

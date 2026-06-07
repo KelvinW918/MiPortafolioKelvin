@@ -41,7 +41,7 @@ const projectsData = {
   '2024': [
     { 
       title: 'Centro Médico El Bosque', 
-      image: '/imagen/NexusMed.webp',
+      image: '/imagen/NexusMed.png',
       desc: 'Multi-role healthcare platform with WhatsApp API integration for automated patient reminders.', 
       tags: ['Django', 'React', 'PostgreSQL'], 
       featured: true, commercial: true, videoUrl: 'https://www.youtube.com/embed/A9gngdGXRW4',
@@ -51,7 +51,7 @@ const projectsData = {
   '2025': [
     { 
       title: 'OptiStock 3D', 
-      image: '/imagen/DigitalTwinWarehouse.webp',
+      image: '/imagen/OptiStock3D.png',
       desc: 'Real-time Inventory Digital Twin with AI demand forecasting. Graduated with Honorable Mention.', 
       tags: ['Three.js', 'Python'], 
       featured: true, commercial: true, videoUrl: 'https://www.youtube.com/embed/DaUsmcq2_Yg',
@@ -61,7 +61,7 @@ const projectsData = {
   '2026': [
     { 
       title: 'KelvIA Engine', 
-      image: '/imagen/KelvIA.webp',
+      image: '/imagen/aiAgent.png',
       desc: 'Cognitive agentic engine with Llama 3.3 integration and modular toolkit for real-time AI reasoning.', 
       tags: ['Python', 'FastAPI'], 
       featured: true, isCaseStudy: true,
@@ -80,7 +80,7 @@ const projectsData = {
     },
     { 
       title: 'Industrial Telemetry', 
-      image: '/imagen/IndustrialTelemetryEngine.webp',
+      image: '/imagen/IndustrialTelemetryEngine.png',
       desc: 'High-concurrency IoT pipeline for +50 sensors with real-time visualization and analytics.', 
       tags: ['Python', 'PostgreSQL', 'FastAPI'], 
       featured: true, isCaseStudy: true,
@@ -99,7 +99,7 @@ const projectsData = {
     },
     { 
       title: 'Digital Twin 3D', 
-      image: '/imagen/DigitalTwinWarehouse.webp',
+      image: '/imagen/DigitalTwin.png',
       desc: 'Warehouse inventory visualization using Three.js with dynamic color-coded stock alerts.', 
       tags: ['Three.js'], 
       featured: true, isCaseStudy: true,
@@ -120,7 +120,7 @@ const projectsData = {
     },
     { 
       title: 'Altrueer Layer 1', 
-      image: '/imagen/H3GeopatialDemo.webp',
+      image: '/imagen/h3GeospatialDemo.png',
       desc: 'Spatial backend architecture for blockchain protocols.', 
       tags: ['Python', 'Redis', 'PostGIS'], 
       isCaseStudy: true,
@@ -138,7 +138,7 @@ redis.geoadd("fleet_loc", lon, lat, unit_id)`,
     },
     { 
       title: 'H3 Spatial Demo', 
-      image: '/imagen/H3GeopatialDemo.webp',
+      image: '/imagen/h3GeospatialDemo.png',
       desc: 'Geospatial clustering and density analysis using Uber H3 hexagonal hierarchical indexing.', 
       tags: ['Python', 'Leaflet.js'], 
       isCaseStudy: true,
@@ -214,7 +214,6 @@ export default function ProjectGrid({ selectedId }) {
                       : 'bg-zinc-900 border-zinc-800'
                 }`}
               >
-                {/* Visualización de la imagen */}
                 {project.image && (
                   <div className="h-40 w-full overflow-hidden bg-zinc-950">
                     <img 
